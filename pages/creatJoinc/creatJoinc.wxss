@@ -1,0 +1,40 @@
+/* pages/creatJoin/creatJoin.wxss */.page{
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  overflow: hidden;
+  background-color: #f6f6f6;
+}
+.pBox{
+  width: 95%;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+}
+.pCon{
+  margin-top: 100rpx;
+}
+.plogo{
+  width: 140rpx;
+  height: 140rpx;
+  background-color: #cccccc;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+}
+.pTxt{
+  font-size: 30rpx;
+  color: #999999;
+}
+.pBtn{
+  margin-top: 50rpx;
+}
+.btn{
+  width: 400rpx;
+  height: 80rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2rpx solid #000;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  margin-bottom: 50rpx;
+}

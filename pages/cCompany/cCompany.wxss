@@ -1,0 +1,73 @@
+/* pages/cCompany/cCompany.wxss */
+.pWrap{
+width: 95%;
+height: calc(100% - 140rpx);
+margin: 0 auto;
+overflow: auto;
+}
+.finish{
+  width: 100%;
+  height: 140rpx;
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+}
+.pC{
+  margin-bottom: 20rpx;
+}
+.logoBox{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  margin: 10rpx auto;
+  /* border: 2rpx dashed springgreen; */
+  background-color: #DFF7E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoBox image{
+  width: 140rpx;
+  height: 140rpx;
+}
+.logoBox image.sm{
+  width: 100rpx;
+  height: 100rpx;
+}
+.tit{
+  line-height: 60rpx;
+}
+.center{
+  text-align: center;
+}
+.iptBox{
+  margin-top: 10rpx;
+  height: 70rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  line-height: 70rpx;
+}
+input{
+  height: 70rpx;
+  width: calc(100% - 40rpx);
+  padding: 0 20rpx;
+}
+.tips{
+  font-size: 32rpx;
+  color: yellowgreen;
+width: auto;
+float: left;
+padding: 8px 0;
+background-color: #fff;
+text-align: left;
+font-weight: normal;
+}
+.finishBtn{
+  width: 95%;
+  height: 80rpx;
+  margin: 26rpx auto;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  text-align: center;
+  line-height: 80rpx;
+}

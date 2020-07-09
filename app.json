@@ -1,0 +1,19 @@
+{
+  "pages":[
+    "pages/cCompany/cCompany",
+    "pages/creatJoinc/creatJoinc",
+    "pages/saCT/saCT",
+    "pages/cTeam/cTeam",
+    "pages/myCT/myCT",
+    "pages/jCompany/jCompany",
+    "pages/jTeam/jTeam",
+    "pages/index/index"
+  ],
+  "window":{
+    "backgroundTextStyle": "light",
+    "navigationBarTextStyle": "black",
+    "navigationStyle":"custom"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

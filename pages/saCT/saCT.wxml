@@ -1,0 +1,37 @@
+<!-- 搜索加入战队 团队 -->
+<view class="page">
+	<view class="iptWrap">
+		<view class="iptBox">
+			<view class="ipt">
+				<input placeholder="请输入"></input>
+			</view>
+			<view class="btn">
+				搜索
+			</view>
+		</view>
+	</view>
+	<view class="list" wx:if="{{0==1}}">
+		<view class="itemWrap">
+			<view class="itemBox">
+				<view class="logo"></view>
+				<view class="lc">
+					<view>哈哈战队</view>
+					<view>111人</view>
+					<view class="date">创建于2020-02-02</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="list">
+		<view class="itemWrap">
+			<view class="itemBox">
+				<view class="logo"></view>
+				<view class="lc tlc">
+					<view>哈哈战队</view>
+					<view>111人</view>
+				</view>
+        <view class="addBtn">加入</view>
+			</view>
+		</view>
+	</view>
+</view>

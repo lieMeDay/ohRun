@@ -1,0 +1,98 @@
+/* pages/cTeam/cTeam.wxss */
+/* pages/cCompany/cCompany.wxss */
+.pWrap {
+  width: 95%;
+  height: calc(100% - 140rpx);
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.pC {
+  margin-bottom: 20rpx;
+}
+
+.logoBox {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  margin: 10rpx auto;
+  /* border: 2rpx dashed springgreen; */
+  background-color: #DFF7E8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logoBox image {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.logoBox image.sm {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.tit {
+  line-height: 60rpx;
+}
+
+.center {
+  text-align: center;
+}
+
+.iptBox {
+  margin-top: 10rpx;
+  height: 70rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  line-height: 70rpx;
+}
+.txtBox{
+  min-height: 70rpx;
+  height: auto;
+}
+textarea{
+  height: 200rpx;
+  width: calc(100% - 40rpx);
+  padding: 0 20rpx;
+}
+input {
+  height: 70rpx;
+  width: calc(100% - 40rpx);
+  padding: 0 20rpx;
+}
+.sub{
+  border: 2rpx solid #000;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}
+.alertWrap{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alertBox{
+  width: 70%;
+  padding: 5%;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.tipTxt{
+  padding-bottom: 5%;
+}
+.tipBtn{
+  border: 2rpx solid #000;
+  line-height: 100rpx;
+  text-align: center;
+  border-radius: 10rpx;
+}

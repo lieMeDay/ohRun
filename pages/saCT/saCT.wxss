@@ -1,0 +1,92 @@
+/* pages/saCT/saCT.wxss */
+.page{
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  background-color: #f6f6f6;
+}
+.iptWrap{
+  width: 100%;
+  background-color: #f6f6f6;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+}
+.iptBox{
+  width: 95%;
+  height: 74rpx;
+  margin: 20rpx auto;
+}
+.ipt{
+  width: calc(100% - 160rpx);
+  height: 70rpx;
+  float: left;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+input{
+  width: calc(100% - 32rpx);
+  height: 70rpx;
+  padding: 0 16rpx;
+}
+.btn{
+  width: 116rpx;
+  line-height: 70rpx;
+  margin-left: 40rpx;
+  float: left;
+  background-color: #fff;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.list{
+  padding-top: 114rpx;
+}
+.itemWrap{
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+}
+.itemBox{
+  width: 95%;
+  margin: 2.5% auto;
+  overflow: hidden;
+}
+.logo{
+  width: 140rpx;
+  height: 140rpx;
+  background-color: #ccc;
+  float: left;
+  margin-right: 30rpx;
+}
+.lc{
+  width: calc(100% - 170rpx);
+  float: left;
+}
+.lc view{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.date{
+  font-size: 30rpx;
+}
+.tlc{
+  width: calc(100% - 170rpx - 170rpx);
+  height: 140rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.addBtn{
+  width: 136rpx;
+  float: right;
+  margin-left: 30rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  margin-top: 28rpx;
+}

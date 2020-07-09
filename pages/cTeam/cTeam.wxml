@@ -1,0 +1,37 @@
+<!-- 创建团队 -->
+<view class="page">
+	<view class="pWrap">
+		<view class="pC">
+			<view class="logoBox" bindtap="toggleImg">
+				<image src="{{logo}}" class="{{logo=='/image/add.png'?'sm':''}}"></image>
+			</view>
+			<view class="tit center">团队Logo</view>
+		</view>
+		<view class="pC">
+			<view class="tit">团队名称</view>
+			<view class="iptBox">
+				<input placeholder="请输入" bindinput="ipt1"></input>
+			</view>
+		</view>
+		<view class="pC">
+			<view class="tit">团队口号</view>
+			<view class="iptBox">
+				<input placeholder="请输入" bindinput="ipt2"></input>
+			</view>
+		</view>
+		<view class="pC">
+			<view class="tit">团队介绍</view>
+			<view class="iptBox txtBox">
+				<textarea bindblur="ipt3" placeholder="请输入" />
+				</view>
+		</view>
+    <view class="sub">提交
+    </view>
+	</view>
+</view>
+<view class="alertWrap" wx:if="{{showAlert}}">
+  <view class="alertBox">
+    <view class="tipTxt">创建团队需审核，提交后请等待战队管理员批准</view>
+    <view class="tipBtn" bindtap="hiddenAlert">知道了</view>
+  </view>
+</view>
