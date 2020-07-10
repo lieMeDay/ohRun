@@ -1,13 +1,13 @@
 <!-- 创建  加入战队 -->
-<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
-<view class="page">
+<nav navbar-data='{{nvabarData}}'></nav>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'>
 	<view class="pBox">
 		<view class="pCon">
 			<view class="plogo"></view>
 			<view class="pTxt">请创建或加入企业</view>
 			<view class="pBtn">
-				<navigator url="/pages/cCompany/cCompany" class="btn">创建</navigator>
-				<navigator url="/pages/jCompany/jCompany" class="btn">加入</navigator>
+				<view data-i="1" bindtap="goPage" class="btn">创建</view>
+				<view data-i="2" bindtap="goPage" class="btn">加入</view>
 			</view>
 		</view>
 	</view>

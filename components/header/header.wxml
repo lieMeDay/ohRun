@@ -7,11 +7,11 @@
     <view class='nav-capsule' style='height: {{height*2 + 44}}px;' wx:if='{{navbarData.showCapsule}}'>
        <!-- //左上角的返回按钮，wx:if='{{!share}}'空制返回按钮显示
        //从分享进入小程序时 返回上一级按钮不应该存在 -->
-      <view bindtap='_navback' wx:if='{{!share}}'>
+      <view bindtap='_navback' wx:if='{{navbarData.showBackPre}}'>
         <image src='/image/back-pre.png' mode='aspectFill' class='back-pre'></image>
       </view>
-      <view class='navbar-v-line' wx:if='{{!share}}'></view>
-      <view bindtap='_backhome'>
+      <!-- <view class='navbar-v-line' wx:if='{{showBackHome}}'></view> -->
+      <view bindtap='_backhome' wx:if='{{navbarData.showBackHome}}'>
         <image src='/image/back-home.png' mode='aspectFill' class='back-home'></image>
       </view>
     </view>

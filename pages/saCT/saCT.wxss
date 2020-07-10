@@ -60,6 +60,10 @@ input{
   float: left;
   margin-right: 30rpx;
 }
+.logo image{
+  width: 140rpx;
+  height: 140rpx;
+}
 .lc{
   width: calc(100% - 170rpx);
   float: left;

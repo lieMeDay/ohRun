@@ -1,0 +1,18 @@
+<!-- 战队列表 -->
+<nav navbar-data='{{nvabarData}}'></nav>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'>
+	<view class="list">
+		<view class="itemWrap" wx:for="{{allList}}" wx:key="index">
+			<view class="itemBox">
+				<view class="logo">
+					<image src="{{item.logo}}"></image>
+				</view>
+				<view class="lc">
+					<view>{{item.name}}</view>
+					<view>111人</view>
+					<view class="date">创建于{{item.showDate}}</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

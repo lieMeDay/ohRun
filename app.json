@@ -1,18 +1,40 @@
 {
   "pages":[
-    "pages/cCompany/cCompany",
-    "pages/creatJoinc/creatJoinc",
-    "pages/saCT/saCT",
     "pages/cTeam/cTeam",
+    "pages/creatJoinc/creatJoinc",
     "pages/myCT/myCT",
+    "pages/company/company",
+    "pages/news/news",
+    "pages/mine/mine",
+    "pages/cCompany/cCompany",
+    "pages/saCT/saCT",
     "pages/jCompany/jCompany",
-    "pages/jTeam/jTeam",
-    "pages/index/index"
+    "pages/jTeam/jTeam"
   ],
   "window":{
     "backgroundTextStyle": "light",
     "navigationBarTextStyle": "black",
     "navigationStyle":"custom"
+  },
+  
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/company/company",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "text": "动态"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

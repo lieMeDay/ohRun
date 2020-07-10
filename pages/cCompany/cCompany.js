@@ -11,11 +11,13 @@ Page({
     // 组件所需的参数
     nvabarData: {
       showCapsule: 1, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '我的主页', //导航栏 中间的标题
+      title: '创建战队', //导航栏 中间的标题
+      showBackPre: 1, //显示返回上一页
+      showBackHome: 0, //显示返回主页
     },
 
     // 此页面 页面内容距最顶部的距离
-    height: app.globalData.height * 2 + 20 , 
+    height: app.globalData.height * 2 + 20,
     logo: '/image/add.png', //战队logo
     name: '', //公司/战队名称
     originator: '', //姓名
@@ -23,17 +25,35 @@ Page({
     openId: '',
     showGPhone: true
   },
+
+  nav_status() {
+    if (getCurrentPages().length == 1) {
+      this.setData({
+        'nvabarData.showCapsule': 0,
+        'nvabarData.showBackPre': 0, //显示返回上一页
+        'nvabarData.showBackHome': 0, //显示返回主页
+      })
+    } else {
+      this.setData({
+        'nvabarData.showCapsule': 1,
+        'nvabarData.showBackPre': 1, //显示返回上一页
+        'nvabarData.showBackHome': 0, //显示返回主页
+      })
+    }
+  },
   // 获取openId
   getOpenId() {
     if (app.globalData.openId) {
       this.setData({
         openId: app.globalData.openId,
       })
+      this.getmyCompany()
     } else {
       app.getOpenIdCallback = res => {
         this.setData({
           openId: res.openid
         })
+        this.getmyCompany()
       }
     }
   },
@@ -45,7 +65,7 @@ Page({
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success(res) {
-        console.log(res)
+        // console.log(res)
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
         var tempFilePaths = res.tempFilePaths;
         // // 上传图片
@@ -127,29 +147,6 @@ Page({
       openId: td.openId,
       creatTime: new Date().getTime()
     }
-    let oo = {
-      openId: td.openId
-    }
-    userFun.getUser(oo).then(r => {
-      if (r) {
-        // 修改
-        r.phone=td.phoneNumber
-        r.name=td.originator
-        userFun.putUser(r)
-      } else {
-        // 添加
-        let mm = {
-          openId: td.openId,
-          nikeName: '',
-          sex: '',
-          city: '',
-          phone: td.phoneNumber,
-          name: td.originator,
-          headImgUrl: ''
-        }
-        userFun.addUser(mm)
-      }
-    })
     // console.log(obj)
     var sj = /^[1][3-8]\d{9}$|^([6|9])\d{7}$|^[0][9]\d{8}$|^[6]([8|6])\d{5}$/; //手机号包括港澳台
     let allMsg = true
@@ -174,12 +171,35 @@ Page({
         break
       }
     }
-    if(allMsg){
+    if (allMsg) {
+      let oo = {
+        openId: td.openId
+      }
+      userFun.getUser(oo).then(r => {
+        if (r) {
+          // 修改
+          r.phone = td.phoneNumber
+          r.name = td.originator
+          userFun.putUser(r)
+        } else {
+          // 添加
+          let mm = {
+            openId: td.openId,
+            nikeName: '',
+            sex: '',
+            city: '',
+            phone: td.phoneNumber,
+            name: td.originator,
+            headImgUrl: ''
+          }
+          userFun.addUser(mm)
+        }
+      })
       tool({
-        url:'/team/addCompany',
-        data:obj,
-        method:'POST'
-      }).then(res=>{
+        url: '/team/addCompany',
+        data: obj,
+        method: 'POST'
+      }).then(res => {
         wx.navigateTo({
           url: '/pages/myCT/myCT',
         })
@@ -193,10 +213,29 @@ Page({
       duration: 2000
     })
   },
+  // 查询是否加入过战队
+  getmyCompany() {
+    let that = this
+    let oo = {
+      openId: that.data.openId
+    }
+    tool({
+      url: '/team/getCompanyList',
+      data: oo
+    }).then(res => {
+      let rr = res.data.data
+      if (rr.length > 0) {
+        wx.redirectTo({
+          url: `/pages/myCT/myCT?id=${rr[0].id}`
+        })
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.nav_status()
     this.getOpenId()
   },
 

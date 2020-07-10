@@ -1,5 +1,6 @@
 <!-- 创建团队 -->
-<view class="page">
+<nav navbar-data='{{nvabarData}}'></nav>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'>
 	<view class="pWrap">
 		<view class="pC">
 			<view class="logoBox" bindtap="toggleImg">
@@ -25,8 +26,7 @@
 				<textarea bindblur="ipt3" placeholder="请输入" />
 				</view>
 		</view>
-    <view class="sub">提交
-    </view>
+    <view class="sub" bindtap="sub">提交</view>
 	</view>
 </view>
 <view class="alertWrap" wx:if="{{showAlert}}">

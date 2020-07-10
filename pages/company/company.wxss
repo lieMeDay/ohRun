@@ -1,0 +1,46 @@
+/* pages/company/company.wxss */
+.page {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+}
+
+.itemWrap {
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.itemBox {
+  width: 95%;
+  margin: 2.5% auto;
+  overflow: hidden;
+}
+
+.logo {
+  width: 140rpx;
+  height: 140rpx;
+  background-color: #ccc;
+  float: left;
+  margin-right: 30rpx;
+}
+
+.logo image {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+.lc {
+  width: calc(100% - 170rpx);
+  float: left;
+}
+
+.lc view {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.date {
+  font-size: 30rpx;
+}

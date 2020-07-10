@@ -1,6 +1,7 @@
 <!-- 搜索加入战队 团队 -->
-<view class="page">
-	<view class="iptWrap">
+<nav navbar-data='{{nvabarData}}'></nav>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'>
+	<view class="iptWrap" style="top:{{height}}px;">
 		<view class="iptBox">
 			<view class="ipt">
 				<input placeholder="请输入"></input>
@@ -10,19 +11,22 @@
 			</view>
 		</view>
 	</view>
-	<view class="list" wx:if="{{0==1}}">
-		<view class="itemWrap">
+	<view class="list" wx:if="{{status=='c'}}">
+		<view class="itemWrap" wx:for="{{allList}}" wx:key="index">
 			<view class="itemBox">
-				<view class="logo"></view>
-				<view class="lc">
-					<view>哈哈战队</view>
-					<view>111人</view>
-					<view class="date">创建于2020-02-02</view>
+				<view class="logo">
+					<image src="{{item.logo}}"></image>
 				</view>
+				<view class="lc tlc">
+					<view>{{item.name}}</view>
+					<view>{{item.coun}}人</view>
+					<view class="date">创建于{{item.showDate}}</view>
+				</view>
+				<view class="addBtn">加入</view>
 			</view>
 		</view>
 	</view>
-	<view class="list">
+	<view class="list" wx:if="{{status=='t'}}">
 		<view class="itemWrap">
 			<view class="itemBox">
 				<view class="logo"></view>
@@ -30,7 +34,7 @@
 					<view>哈哈战队</view>
 					<view>111人</view>
 				</view>
-        <view class="addBtn">加入</view>
+				<view class="addBtn">加入</view>
 			</view>
 		</view>
 	</view>
