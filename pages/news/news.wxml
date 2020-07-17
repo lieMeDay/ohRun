@@ -1,3 +1,0 @@
-<!-- 动态 -->
-<nav navbar-data='{{nvabarData}}'></nav>
-<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'></view>

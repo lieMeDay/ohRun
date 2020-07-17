@@ -1,4 +1,4 @@
-// pages/jTeam/jTeam.js
+// pages/dynamic/dynamic.js
 Page({
 
   /**

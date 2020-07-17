@@ -15,6 +15,7 @@
   height: 140rpx;
   margin: 0 auto;
   display: flex;
+  align-items: center;
 }
 .biglogo{
   width: 140rpx;
@@ -32,6 +33,9 @@
 } */
 .cMsg{
   width: calc(100% - 140rpx - 2.5%);
+}
+.cTit{
+  overflow: hidden;
 }
 .ctcon{
   float: left;
@@ -76,8 +80,12 @@
   justify-content: space-between;
 }
 .adBox image{
-  width: 50rpx;
-  height: 50rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.ff{
+  display: flex;
+  align-items: center;
 }
 .listWrap{
   width: 100%;
@@ -104,50 +112,55 @@
   width: 95%;
   margin: 0 auto;
 }
-.footer{
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  z-index: 10;
-  display: flex;
-  justify-content: space-around;
-  height: 100rpx;
-  line-height: 100rpx;
-  background-color: yellowgreen;
-  color: #fff;
+.btn.bc1{
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 40rpx;
 }
-
-/* 无加入团队显示 创建或加入 */
-.pBox{
-  width: 95%;
-  overflow: hidden;
-  margin: 0 auto;
+.none{
   text-align: center;
 }
-.pCon{
-  margin-top: 100rpx;
-}
-.plogo{
-  width: 140rpx;
-  height: 140rpx;
-  background-color: #cccccc;
-  margin: 0 auto;
-  margin-bottom: 30rpx;
-}
-.pTxt{
-  font-size: 30rpx;
-  color: #999999;
-}
-.pBtn{
-  margin-top: 50rpx;
-}
-.btn{
-  width: 400rpx;
-  height: 80rpx;
-  margin: 0 auto;
+
+/* 团队成员 */
+.presonWrap{
+  width: 100%;
+  overflow: hidden;
+  margin: 20rpx auto;
   background-color: #fff;
-  border: 2rpx solid #000;
-  line-height: 80rpx;
-  border-radius: 10rpx;
-  margin-bottom: 50rpx;
+  padding: 20rpx;
 }
+.preson,.presonBox{
+  width: 95%;
+  margin: 0 auto;
+}
+.presonBox{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20rpx;
+}
+.headImgList{
+  max-width: 300rpx;
+}
+.headImgList image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  float: left;
+  margin-left: -10rpx;
+  background-color: #ccc;
+}
+.headImgList image:first-child{
+  margin-left: 0;
+}
+.pre_right{
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pre_right image{
+  width: 30rpx;
+  height: 30rpx;
+}
+/* 团队成员完 */

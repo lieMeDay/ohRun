@@ -23,7 +23,7 @@
 		<view class="pC">
 			<view class="tit">团队介绍</view>
 			<view class="iptBox txtBox">
-				<textarea bindblur="ipt3" placeholder="请输入" />
+				<textarea bindinput="ipt3" placeholder="请输入" />
 				</view>
 		</view>
     <view class="sub" bindtap="sub">提交</view>

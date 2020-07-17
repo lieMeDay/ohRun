@@ -1,55 +1,53 @@
-<!-- 我的企业详情 -->
+<!-- 查看团队信息 -->
 <nav navbar-data='{{nvabarData}}'></nav>
-<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px - 100rpx);'>
-	<view id="head">
-		<view class="companyWrap">
-			<view class="cBox">
-				<view class="biglogo">
-					<image src="{{myCompany.logo}}"></image>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'>
+	<view class="companyWrap">
+		<view class="cBox">
+			<view class="biglogo">
+				<image src="{{teamMsg.logo}}"></image>
+			</view>
+			<view class="cMsg">
+				<view class="cTit">
+					<view class="ctcon">{{teamMsg.name}}</view>
+					<navigator url="/pages/setting/setting?teamId={{teamId}}&type=t" class="setting" wx:if="{{teamMsg.type2!=0&&teamMsg.status==1}}">设置</navigator>
 				</view>
-				<view class="cMsg">
-					<view class="cTit">
-						<view class="ctcon">{{myCompany.name}}</view>
-						<navigator url="/pages/setting/setting?comId={{companyId}}&type=c" class="setting" wx:if="{{myCompany.type!=0&&myCompany.type!=1&&myCompany.type!=2}}">设置</navigator>
-					</view>
-					<view>{{myCompany.coun}}人</view>
-					<view class="cDate">创建于 {{myCompany.showDate}}</view>
-				</view>
+				<view>{{teamMsg.coun}}人</view>
+				<view class="cDate">创建于 {{teamMsg.showDate}}</view>
 			</view>
 		</view>
-		<navigator url="/pages/admin/admin?comId={{companyId}}&&type=c" class="adWrap" wx:if="{{myCompany.type==3}}">
-			<view class="adBox">
-				<view>管理站队</view>
-				<view class="ff">
-					<view wx:if="{{auditNum!=0}}">{{auditNum}}条待审核</view>
-					<image src="/image/more.png"></image>
-				</view>
-			</view>
-		</navigator>
-		<navigator url="/pages/preson/preson?comId={{companyId}}&&CorT=c" class="presonWrap">
-			<view class="preson">战队成员</view>
-			<view class="presonBox">
-				<view class="pre_left">
-					<view class="headImgList">
-						<image wx:for="{{userList}}" wx:key="index" src="{{item.headImgUrl}}" wx:if="{{index<=9}}"></image>
-					</view>
-				</view>
-				<view class="pre_right">
-					<image src="/image/more.png"></image>
-				</view>
-			</view>
-		</navigator>
 	</view>
+	<navigator url="/pages/admin/admin?teamId={{teamId}}&&type=t" class="adWrap" wx:if="{{teamMsg.type2==1}}">
+		<view class="adBox">
+			<view>管理团队</view>
+			<view class="ff">
+			<view wx:if="{{auditNum&&auditNum!=0}}">{{auditNum}}条待审核</view>
+				<image src="/image/more.png"></image>
+			</view>
+		</view>
+	</navigator>
+	<navigator url="/pages/preson/preson?teamId={{teamId}}&&CorT=t" class="presonWrap">
+		<view class="preson">团队成员</view>
+		<view class="presonBox">
+			<view class="pre_left">
+				<view class="headImgList">
+					<image wx:for="{{userList}}" wx:key="index" src="{{item.headImgUrl}}" wx:if="{{index<=9}}"></image>
+				</view>
+			</view>
+			<view class="pre_right">
+				<image src="/image/more.png"></image>
+			</view>
+		</view>
+	</navigator>
 	<!-- 我的战队 -->
-	<view class="TeamWrap list_item">
+	<view class="TeamWrap">
 		<view class="listWrap">
-			<view class="listTit {{curClass}}" style="top: {{curClass?height:''}}px;">
+			<view class="listTit">
 				<view data-i="1" bindtap="toggleList">
-					<view>战队活动</view>
+					<view>团队活动</view>
 					<view class="bline {{currI==1?'act':''}}"></view>
 				</view>
 				<view data-i="2" bindtap="toggleList">
-					<view>团队</view>
+					<view>团队公告</view>
 					<view class="bline {{currI==2?'act':''}}"></view>
 				</view>
 				<view data-i="3" bindtap="toggleList">
@@ -76,7 +74,7 @@
 					<navigator url="/pages/cTeam/cTeam?comId={{companyId}}" class="btn bc1" wx:if="{{allTeam.length<=0&&myCompany.type!=0&&myCompany.type!=1&&myCompany.type!=2}}">创建</navigator>
 					<view class="none" wx:if="{{allTeam.length<=0&&myCompany.type==0&&myCompany.type==1&&myCompany.type==2}}">暂无</view>
 					<view class="lcnr" wx:for="{{allTeam}}" wx:key="index">
-						<navigator url="/pages/seeTeam/seeTeam?teamId={{item.id}}" class="cBox">
+						<view class="cBox">
 							<view class="biglogo">
 								<image src="{{item.logo}}"></image>
 							</view>
@@ -86,7 +84,7 @@
 								</view>
 								<view>{{item.coun}}人</view>
 							</view>
-						</navigator>
+						</view>
 					</view>
 				</view>
 				<view class="lc" wx:if="{{currI==3}}">3</view>

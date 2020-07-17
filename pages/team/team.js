@@ -38,15 +38,6 @@ Page({
       })
     }
   },
-  toggleList(e) {
-    this.setData({
-      currI: e.currentTarget.dataset.i
-    })
-    wx.pageScrollTo({
-      scrollTop: 0,
-      duration: 300
-    })
-  },
   // 获取滚动固定高度
   getHeight() {
     var that = this;
@@ -66,7 +57,6 @@ Page({
         // openId:'o3VuM5YikzIzdADRbx81nuei1nno'
       })
       this.getmyCompany()
-      this.getTeam()
     } else {
       app.getOpenIdCallback = res => {
         this.setData({
@@ -74,98 +64,56 @@ Page({
           // openId:'o3VuM5YikzIzdADRbx81nuei1nno'
         })
         this.getmyCompany()
-        this.getTeam()
       }
     }
   },
-  // 获取战队信息及与我的关系
+  // 获取我的战队
   getmyCompany() {
     let that = this
     let oo = {
-      openId: that.data.openId,
-      id: that.data.companyId
+      openId: that.data.openId
     }
     tool({
-      url: '/team/getCompanyBrief',
+      url: '/team/getCompanyList',
       data: oo
     }).then(res => {
       let rr = res.data.data
-      if (rr) {
-        rr.showDate = util.timeChange(rr.creatTime, 2)
-        that.setData({
-          myCompany: rr,
-        })
-        if (rr.type != 0 && rr.type != 1 && rr.type != 2) {
-          that.getTeam(1)
-        }
-        if (rr.type == 3) {
-          if (rr.stateCom == 2) {
-            let jj = {
-              id: that.data.companyId
-            }
-            tool({
-              url: '/team/getCompanyApply',
-              data: jj
-            }).then(res => {
-              let rr = res.data.data.length
-              let an = that.data.auditNum
-              an += rr
-              that.setData({
-                auditNum: an
-              })
-            })
-          }
-        }
-      } else {
-        if (app.globalData.share) {
-          // 通过分享进入，直接添加 
-          // 注 分享时把战队id加上
-        } else {
+      if (rr.length > 0) {
+        if (rr[0].type == 0) {
           wx.redirectTo({
             url: '/pages/creatJoinc/creatJoinc',
           })
+        } else {
+          rr[0].showDate = util.timeChange(rr[0].creatTime, 2)
+          that.setData({
+            myCompany:rr[0],
+            companyId:rr[0].id
+          })
+          that.getMyTeam()
         }
+      } else {
+        wx.redirectTo({
+          url: '/pages/creatJoinc/creatJoinc',
+        })
       }
     })
   },
-  // 获取战队成员
-  getPresonList() {
-    let that = this
-    let oo = {
-      id: that.data.companyId
-    }
-    tool({
-      url: '/team/getCompanyPerson',
-      data: oo
-    }).then(res => {
-      let rr = res.data.data
-      that.setData({
-        userList: rr
-      })
-    })
-  },
-  // 获取团队
-  getTeam() {
+  // 获取我的团队
+  getMyTeam(){
     let that = this
     let td = that.data
     let oo = {
       id: td.companyId,
-      openId: ''
+      openId: td.openId
     }
     tool({
       url: '/team/getCompanyTeams',
       data: oo
     }).then(res => {
       let rr = res.data.data
-      let bb = rr.filter(v => v.status == 3)
-      let an = that.data.auditNum
-      an += bb.length
+      rr = rr.filter(v => v.status != 2)
       that.setData({
-        auditNum: an
-      })
-      rr = rr.filter(v => v.status == 1)
-      that.setData({
-        allTeam: rr
+        myTeam: rr
       })
     })
   },
@@ -174,10 +122,6 @@ Page({
    */
   onLoad: function (options) {
     this.nav_status()
-    // options.comId = 9
-    this.setData({
-      companyId: options.comId
-    })
   },
 
   /**
@@ -200,7 +144,6 @@ Page({
       auditNum: 0
     })
     this.getOpenId()
-    this.getPresonList()
   },
 
   /**

@@ -1,19 +1,11 @@
 // pages/mine/mine.js
-const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 组件所需的参数
-    nvabarData: {
-      showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '百团大战', //导航栏 中间的标题
-      showBackPre: 0, //显示返回上一页
-      showBackHome: 0, //显示返回主页
-    },
-    height: app.globalData.height * 2 + 20,
+
   },
 
   /**

@@ -1,0 +1,5 @@
+<!-- 分享 -->
+<view class="shareBox">
+	<view>邀请码</view>
+	<view>分享邀请</view>
+</view>

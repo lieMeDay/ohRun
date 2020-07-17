@@ -1,0 +1,9 @@
+/* components/share/share.wxss */
+.shareBox{
+  width: 100%;
+  background-color: #fff;
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

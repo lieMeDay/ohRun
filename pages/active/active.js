@@ -1,4 +1,4 @@
-// pages/jCompany/jCompany.js
+// pages/active/active.js
 Page({
 
   /**

@@ -23,6 +23,8 @@ Page({
     originator: '', //姓名
     phoneNumber: '', //手机号
     openId: '',
+    userInfo: {},
+    hasInfo: true,
     showGPhone: true
   },
 
@@ -47,15 +49,38 @@ Page({
       this.setData({
         openId: app.globalData.openId,
       })
+      this.getUser()
       this.getmyCompany()
     } else {
       app.getOpenIdCallback = res => {
         this.setData({
           openId: res.openid
         })
+        this.getUser()
         this.getmyCompany()
       }
     }
+  },
+  // 获取用户信息
+  getUser() {
+    let that = this
+    let oo = {
+      openId: this.data.openId
+    }
+    userFun.getUser(oo).then(r => {
+      if (r && r.nikeName) {
+        that.setData({
+          originator: r.nikeName,
+          hasInfo: false
+        })
+      }
+      if (r && r.phone) {
+        that.setData({
+          phoneNumber: r.phone,
+          showGPhone: false
+        })
+      }
+    })
   },
   // logo
   toggleImg() {
@@ -98,6 +123,21 @@ Page({
     this.setData({
       phoneNumber: e.detail.value
     })
+  },
+  ipt4(e){
+    this.setData({
+      info: e.detail.value
+    })
+  },
+  getUserInfo(e) {
+    let that = this
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        originator: e.detail.userInfo.nickName,
+        userInfo: e.detail.userInfo
+      })
+    }
   },
   // 获取手机号
   getPhone(e) {
@@ -171,6 +211,7 @@ Page({
         break
       }
     }
+    obj.info=td.info //简介
     if (allMsg) {
       let oo = {
         openId: td.openId
@@ -180,6 +221,12 @@ Page({
           // 修改
           r.phone = td.phoneNumber
           r.name = td.originator
+          if (JSON.stringify(td.userInfo) != '{}') {
+            r.nikeName = td.userInfo.nickName
+            r.sex = td.userInfo.gender
+            r.city = td.userInfo.city
+            r.headImgUrl = td.userInfo.avatarUrl
+          }
           userFun.putUser(r)
         } else {
           // 添加
@@ -192,6 +239,12 @@ Page({
             name: td.originator,
             headImgUrl: ''
           }
+          if (JSON.stringify(td.userInfo) != '{}') {
+            mm.nikeName = td.userInfo.nickName
+            mm.sex = td.userInfo.gender
+            mm.city = td.userInfo.city
+            mm.headImgUrl = td.userInfo.avatarUrl
+          }
           userFun.addUser(mm)
         }
       })
@@ -200,8 +253,11 @@ Page({
         data: obj,
         method: 'POST'
       }).then(res => {
-        wx.navigateTo({
-          url: '/pages/myCT/myCT',
+        // wx.navigateTo({
+        //   url: '/pages/myCT/myCT?id=' + res.data.data,
+        // })
+        wx.switchTab({
+          url: '/pages/team/team',
         })
       })
     }
@@ -225,9 +281,20 @@ Page({
     }).then(res => {
       let rr = res.data.data
       if (rr.length > 0) {
-        wx.redirectTo({
-          url: `/pages/myCT/myCT?id=${rr[0].id}`
-        })
+        if (rr[0].type == 0) {
+          wx.showToast({
+            title: '您已被拒绝加入战队,请创建或重新申请加入',
+            icon: 'none',
+            duration: 3000
+          })
+        } else {
+          // wx.redirectTo({
+          //   url: `/pages/myCT/myCT?id=${rr[0].id}`
+          // })
+          wx.switchTab({
+            url: '/pages/team/team',
+          })
+        }
       }
     })
   },

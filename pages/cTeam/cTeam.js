@@ -33,6 +33,24 @@ Page({
       }
     }
   },
+  // 获取 是否需要审核
+  getCompany(opt) {
+    tool({
+      url: '/team/getCompanyById',
+      data: opt
+    }).then(res => {
+      let rr = res.data.data
+      if (rr.stateTeam == 1) {
+        this.setData({
+          showAlert: false
+        })
+      } else {
+        this.setData({
+          showAlert: true
+        })
+      }
+    })
+  },
   // logo
   toggleImg() {
     let that = this
@@ -91,7 +109,7 @@ Page({
       info: td.info,
       slogan: td.slogan,
       companyId: td.companyId,
-      openId:td.openId
+      openId: td.openId
     }
     let trueMsg = true
     for (let k in obj) {
@@ -108,6 +126,13 @@ Page({
         url: '/team/addTeam',
         data: obj,
         method: "POST"
+      }).then(res => {
+        // wx.redirectTo({
+        //   url: '/pages/myCT/myCT?id=' + td.companyId + '&state=2',
+        // })
+        wx.switchTab({
+          url: '/pages/team/team',
+        })
       })
     }
   },
@@ -123,10 +148,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    options.id = 4
+    // options.comId=3
+    wx.hideShareMenu()
     this.setData({
-      companyId: options.id
+      companyId: options.comId
     })
+    let oo = {
+      id: options.comId
+    }
+    this.getCompany(oo)
     this.getOpenId()
   },
 

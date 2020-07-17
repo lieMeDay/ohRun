@@ -1,0 +1,228 @@
+.page {
+  width: 100%;
+  min-height: 100%;
+  position: absolute;
+  background-color: #f4f1f4;
+  padding-bottom: 100rpx;
+}
+
+.companyWrap {
+  width: 100%;
+  /* background-color: #fff; */
+  background: linear-gradient(to right, #00BAFF, #0084FF);
+  height: 140rpx;
+  padding: 20rpx 0;
+}
+
+.cBox {
+  width: 95%;
+  /* height: 140rpx; */
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.cCon {
+  width: 95%;
+  padding: 2.5%;
+  display: flex;
+  align-items: center;
+}
+
+.cC {
+  width: 95%;
+  padding: 2.5%;
+  padding-top: 0;
+  height: 100rpx;
+  overflow: hidden;
+}
+
+.toggleC {
+  width: 140rpx;
+  margin-right: 2.5%;
+  float: left;
+  font-size: 28rpx;
+}
+
+.cJJ {
+  width: calc(100% - 2.5% - 140rpx);
+  float: right;
+  font-size: 24rpx;
+  color: #666666;
+  text-overflow:ellipsis;
+  z-index: -1;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.biglogo {
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 2.5%;
+}
+
+.biglogo image {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+/* .cTit{
+  display: flex;
+  justify-content: space-between;
+} */
+.cMsg {
+  width: calc(100% - 140rpx - 2.5%);
+}
+
+.cTit {
+  overflow: hidden;
+}
+
+.ctcon {
+  float: left;
+  width: calc(100% - 90rpx);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ctcon.nrxt {
+  width: 100%;
+}
+
+.lcnr {
+  margin-top: 30rpx;
+}
+
+.lcflex {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+
+.lcnr:last-child {
+  margin-bottom: 30rpx;
+}
+
+.setting {
+  float: right;
+  width: 80rpx;
+  text-align: center;
+}
+
+.cDate {
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.more {
+  width: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.more image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.team {
+  margin-top: 100rpx;
+}
+
+/* 无加入团队显示 创建或加入 */
+.pBox {
+  width: 95%;
+  overflow: hidden;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pCon {
+  margin-top: 100rpx;
+}
+
+.plogo {
+  width: 140rpx;
+  height: 140rpx;
+  background-color: #cccccc;
+  margin: 0 auto;
+  margin-bottom: 30rpx;
+}
+
+.pTxt {
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.pBtn {
+  margin-top: 50rpx;
+}
+
+.btn {
+  width: 400rpx;
+  height: 80rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2rpx solid #000;
+  line-height: 80rpx;
+  border-radius: 10rpx;
+  margin-bottom: 50rpx;
+}
+
+/* 无团队完 */
+/* 我的团队 有团队 */
+.hasTeam {
+  width: 100%;
+  overflow: hidden;
+  padding: 20rpx 0;
+  margin: 20rpx auto;
+  background-color: #fff;
+}
+
+.htTit {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.htbbox {
+  display: flex;
+}
+
+.htBtn {
+  border: 2rpx solid #ccc;
+  border-radius: 10rpx;
+  line-height: 50rpx;
+  padding: 10rpx 20rpx;
+}
+
+.htb1 {
+  margin-right: 20rpx;
+}
+
+.cmx {
+  width: calc(100% - 140rpx - 2.5% - 200rpx);
+}
+
+.httip {
+  width: 200rpx;
+  text-align: center;
+  color: #00CC33;
+}
+
+/* 我的团队完 */
+
+.item_fix {
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+}

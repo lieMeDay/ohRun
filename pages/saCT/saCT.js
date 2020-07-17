@@ -33,27 +33,121 @@ Page({
       })
     }
   },
-  
-  getAllCompany(){
-    let that=this
+  // 获取openId
+  getOpenId() {
+    if (app.globalData.openId) {
+      this.setData({
+        openId: app.globalData.openId,
+        // openId:'o3VuM5YikzIzdADRbx81nuei1nno'
+      })
+      this.getAllTeam(1)
+    } else {
+      app.getOpenIdCallback = res => {
+        this.setData({
+          openId: res.openid
+          // openId:'o3VuM5YikzIzdADRbx81nuei1nno'
+        })
+        this.getAllTeam(1)
+      }
+    }
+  },
+  // 所有战队
+  getAllCompany() {
+    let that = this
     tool({
-      url:"/team/getCompanyList",
-      data:{openId:''}
-    }).then(res=>{
-      let rr=res.data.data
-      rr.forEach(v=>{
-        v.showDate=util.timeChange(v.creatTime,2)
+      url: "/team/getCompanyList",
+      data: {
+        openId: ''
+      }
+    }).then(res => {
+      let rr = res.data.data
+      rr.forEach(v => {
+        v.showDate = util.timeChange(v.creatTime, 2)
       })
       that.setData({
-        allList:rr
+        allList: rr
       })
     })
+  },
+  // 所有团队
+  getAllTeam(s) {
+    let that = this
+    let oo = {
+      id: that.data.comId,
+      openId: ''
+    }
+    if (s) {
+      oo.openId = that.data.openId
+    }
+    tool({
+      url: '/team/getCompanyTeams',
+      data: oo
+    }).then(res => {
+      let rr = res.data.data
+      rr = rr.filter(v => v.status == 1)
+      if (s) {
+        that.setData({
+          myTeam: rr
+        })
+        that.getAllTeam()
+      } else {
+        let mt = that.data.myTeam
+        rr.forEach((v) => {
+          mt.forEach((vv) => {
+            if (v.id == vv.id) {
+              v.mystate = vv.status
+            }
+          })
+        })
+        that.setData({
+          teamList: rr
+        })
+      }
+    })
+  },
+  // 加入团队
+  addTeam(e) {
+    let that = this
+    let v = e.currentTarget.dataset.v
+    if (v.type == 1) {
+      wx.showModal({
+        title: '提示',
+        content: '加入团队需审核，请等待团长批准',
+        showCancel: false,
+        success(res) {
+          if (res.confirm) {
+            // console.log('用户点击确定')
+            that.adt(v)
+          }
+        }
+      })
+    } else {
+      that.adt(v)
+    }
+  },
+  adt(v) {
+    let oo = {
+      id: v.id,
+      openId: this.data.openId
+    }
+    if (oo.openId) {
+      tool({
+        url: '/team/putPersonToTeam',
+        data: oo
+      }).then(res=>{
+        wx.redirectTo({
+          url: '/pages/myCT/myCT?id='+this.data.comId+'&state=2',
+        })
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.nav_status()
+    // options.status = 't'
+    // options.comId = 3
     if (options.status == 'c') {
       this.setData({
         "nvabarData.title": '加入战队',
@@ -65,6 +159,10 @@ Page({
         "nvabarData.title": '加入团队',
         status: options.status
       })
+      this.setData({
+        comId: options.comId
+      })
+      this.getOpenId()
     }
   },
 

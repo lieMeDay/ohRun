@@ -1,0 +1,143 @@
+/* pages/setting/setting.wxss */
+.page {
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  background-color: #f6f6f6;
+}
+
+.item {
+  width: 100%;
+  background-color: #fff;
+}
+
+.itemCon {
+  width: 95%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom: 2rpx solid #f0f0f0;
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemCon:last-child {
+  border: none;
+}
+
+.right {
+  /* max-width: 300rpx; */
+  display: flex;
+  align-items: center;
+}
+
+.con {
+  /* max-width: 280rpx; */
+  margin-right: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+}
+
+.con image {
+  width: 80rpx;
+  height: 80rpx;
+}
+
+.arrow {
+  width: 50rpx;
+  height: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: right;
+}
+
+.arrow image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.switch {
+  zoom: .7;
+}
+
+/* 弹框内容 */
+.alertWrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alertBox {
+  width: calc(90% - 30rpx);
+  background-color: #fff;
+  padding: 30rpx;
+}
+
+.btnBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cancleBtn {
+  color: #ccc;
+}
+
+.sureBtn {
+  color: greenyellow;
+}
+
+.ipt {
+  width: calc(100% - 40rpx);
+  padding: 10rpx 20rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  margin-top: 20rpx;
+}
+
+.big {
+  padding: 20rpx;
+  border: 2rpx solid #f0f0f0;
+}
+
+textarea {
+  width: 100%;
+  height: 250rpx;
+}
+
+.del {
+  width: 100%;
+  margin-top: 20rpx;
+  background-color: #fff;
+  line-height: 80rpx;
+  color: red;
+  text-align: center;
+}
+
+.sqBtn {
+  width: auto;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-color: transparent;
+  line-height: inherit;
+  border-radius: 0;
+  font-weight: normal;
+}
+.none{
+  display: flex;
+  align-items: center;
+}
+.sqBtn::after {
+  border: none;
+}
+

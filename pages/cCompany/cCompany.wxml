@@ -2,30 +2,37 @@
 <nav navbar-data='{{nvabarData}}'></nav>
 <view class="page" style='margin-top: {{height}}px'>
 	<view class="pWrap">
-		<view  class="pC">
-      <view class="logoBox" bindtap="toggleImg">
-      <image src="{{logo}}" class="{{logo=='/image/add.png'?'sm':''}}"></image>
-      </view>
-			<view class="tit center">公司/组织Logo</view>
+		<view class="pC">
+			<view class="logoBox" bindtap="toggleImg">
+				<image src="{{logo}}" class="{{logo=='/image/add.png'?'sm':''}}"></image>
+			</view>
+			<view class="tit center">战队Logo<text class="redX">*</text></view>
 		</view>
 		<view class="pC">
-			<view class="tit">公司/组织名称</view>
+			<view class="tit">公司/组织战队名称<text class="redX">*</text></view>
 			<view class="iptBox">
 				<input placeholder="请输入" bindinput="ipt1"></input>
 			</view>
 		</view>
-		<view  class="pC">
-			<view class="tit">姓名</view>
+		<view class="pC {{hasInfo?'nb':''}}">
+			<view class="tit">姓名<text class="redX">*</text></view>
 			<view class="iptBox">
-				<input placeholder="请输入" bindinput="ipt2"></input>
+				<input placeholder="请输入" bindinput="ipt2" value="{{originator}}"></input>
 			</view>
+			<button class="tips" wx:if="{{hasInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">获取微信昵称</button>
 		</view>
-		<view  class="pC">
-			<view class="tit">手机号</view>
+		<view class="pC">
+			<view class="tit">手机号<text class="redX">*</text></view>
 			<view class="iptBox">
 				<input placeholder="请输入" bindinput="ipt3" value="{{phoneNumber}}"></input>
 			</view>
-      <button class="tips" wx:if="showGPhone" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取微信手机号</button>
+			<button class="tips" wx:if="{{showGPhone}}" open-type="getPhoneNumber" bindgetphonenumber="getPhone">获取微信手机号</button>
+		</view>
+		<view class="pC">
+			<view class="tit">战队简介</view>
+			<view class="iptBox">
+			<textarea class="textarea" placeholder="请输入" bindinput="ipt4"></textarea>
+			</view>
 		</view>
 	</view>
 	<view class="finish">

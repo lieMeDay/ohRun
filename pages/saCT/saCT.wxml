@@ -11,6 +11,7 @@
 			</view>
 		</view>
 	</view>
+	<!-- 战队 -->
 	<view class="list" wx:if="{{status=='c'}}">
 		<view class="itemWrap" wx:for="{{allList}}" wx:key="index">
 			<view class="itemBox">
@@ -22,19 +23,25 @@
 					<view>{{item.coun}}人</view>
 					<view class="date">创建于{{item.showDate}}</view>
 				</view>
-				<view class="addBtn">加入</view>
+				<navigator url="/pages/Jct/Jct?id={{item.id}}&type=c" class="addBtn">加入</navigator>
 			</view>
 		</view>
 	</view>
+	<!-- 团队 -->
 	<view class="list" wx:if="{{status=='t'}}">
 		<view class="itemWrap">
-			<view class="itemBox">
-				<view class="logo"></view>
-				<view class="lc tlc">
-					<view>哈哈战队</view>
-					<view>111人</view>
+			<view class="itemBox" wx:for="{{teamList}}" wx:key="index">
+				<view class="logo">
+					<image src="{{item.logo}}"></image>
 				</view>
-				<view class="addBtn">加入</view>
+				<view class="lc tlc">
+					<view>{{item.name}}</view>
+					<view>{{item.coun}}人</view>
+				</view>
+				<view class="addBtn" wx:if="{{!item.mystate||item.mystate==2||item.mystate==4}}" data-v="{{item}}" bindtap="addTeam">加入</view>
+				<view class="addBtn s1" wx:if="{{item.mystate==1}}">已加入</view>
+				<view class="addBtn s2" wx:if="{{item.mystate==3}}">加入审核中</view>
+				<view class="addBtn s3" wx:if="{{item.mystate==5}}">黑名单人员</view>
 			</view>
 		</view>
 	</view>

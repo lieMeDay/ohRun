@@ -1,0 +1,73 @@
+<!-- 我的企业详情 -->
+<nav navbar-data='{{nvabarData}}'></nav>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px - 100rpx);'>
+	<view id="head">
+		<navigator url="/pages/company/company?comId={{companyId}}" class="companyWrap">
+			<view class="cBox">
+				<view class="cCon">
+					<view class="biglogo">
+						<image src="{{myCompany.logo}}"></image>
+					</view>
+					<view class="cMsg">
+						<view class="cTit">
+							<view class="ctcon">{{myCompany.name}}</view>
+							<!-- <navigator url="/pages/setting/setting?comId={{companyId}}&type=c" class="setting" wx:if="{{myCompany.type!=0&&myCompany.type!=1&&myCompany.type!=2}}">设置</navigator> -->
+						</view>
+						<view>{{myCompany.coun}}人</view>
+						<view class="cDate">创建于 {{myCompany.showDate}}</view>
+					</view>
+					<view class="more">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+				<view class="cC">
+					<view class="toggleC">切换战队</view>
+					<view class="cJJ">战队简介: <text>{{myCompany.info}}</text></view>
+				</view>
+			</view>
+		</navigator>
+	</view>
+	<!-- 我的团队 -->
+	<view class="team list_item">
+		<!-- 无加入团队显示 创建或加入 -->
+		<view class="pBox" wx:if="{{myTeam.length<=0}}">
+			<view class="pCon">
+				<view class="plogo"></view>
+				<view class="pTxt">您还没有团队</view>
+				<view class="pBtn">
+					<navigator url="/pages/cTeam/cTeam?comId={{companyId}}" class="btn">创建</navigator>
+					<navigator url="/pages/saCT/saCT?status=t&comId={{companyId}}" class="btn">加入</navigator>
+				</view>
+			</view>
+		</view>
+		<!-- 已有加入团队 -->
+		<view class="hasTeam" wx:if="{{myTeam.length>0}}">
+			<view class="{{curClass}}" style="top: {{curClass?height:''}}px;">
+				<view class="htTit">
+					<view>我的团队</view>
+					<view class="htbbox">
+						<navigator url="/pages/cTeam/cTeam?comId={{companyId}}" class="htBtn htb1">创建</navigator>
+						<navigator url="/pages/saCT/saCT?status=t&comId={{companyId}}" class="htBtn htb2">加入</navigator>
+					</view>
+				</view>
+			</view>
+			<view class="lcnr" wx:for="{{myTeam}}" wx:key="index">
+				<navigator url="/pages/seeTeam/seeTeam?teamId={{item.id}}" class="cBox">
+					<view class="biglogo">
+						<image src="{{item.logo}}"></image>
+					</view>
+					<view class="cMsg lcflex cmx">
+						<view class="cTit">
+							<view class="ctcon nrxt">{{item.name}}{{curClass}}</view>
+						</view>
+						<view>{{item.coun}}人</view>
+					</view>
+					<view class="httip" wx:if="{{item.status==3}}">创建审核中</view>
+					<view class="httip" wx:if="{{item.status==1&&item.type2==1}}">团长</view>
+					<view class="httip" wx:if="{{item.status==1&&item.type2==2}}">团员</view>
+					<view class="httip" wx:if="{{item.status==1&&item.type2==3}}">团员</view>
+				</navigator>
+			</view>
+		</view>
+	</view>
+</view>

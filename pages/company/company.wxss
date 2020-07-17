@@ -1,46 +1,172 @@
-/* pages/company/company.wxss */
-.page {
+.page{
   width: 100%;
   min-height: 100%;
   position: absolute;
+  background-color: #f6f6f6;
+  padding-bottom: 100rpx;
 }
-
-.itemWrap {
+.companyWrap{
   width: 100%;
-  overflow: hidden;
   background-color: #fff;
+  height: 140rpx;
+  padding: 20rpx 0;
 }
-
-.itemBox {
+.cBox{
   width: 95%;
-  margin: 2.5% auto;
+  height: 140rpx;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.biglogo{
+  width: 140rpx;
+  height: 140rpx;
+  margin-right: 2.5%;
+  background-color: #ccc;
+}
+.biglogo image{
+  width: 140rpx;
+  height: 140rpx;
+}
+/* .cTit{
+  display: flex;
+  justify-content: space-between;
+} */
+.cMsg{
+  width: calc(100% - 140rpx - 2.5%);
+}
+.cTit{
   overflow: hidden;
 }
-
-.logo {
-  width: 140rpx;
-  height: 140rpx;
-  background-color: #ccc;
+.ctcon{
   float: left;
-  margin-right: 30rpx;
-}
-
-.logo image {
-  width: 140rpx;
-  height: 140rpx;
-}
-
-.lc {
-  width: calc(100% - 170rpx);
-  float: left;
-}
-
-.lc view {
+  width: calc(100% - 90rpx);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
-.date {
+.ctcon.nrxt{
+  width: 100%;
+}
+.lcnr{
+  margin-top: 30rpx;
+}
+.lcflex{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-around;
+}
+.lcnr:last-child{
+  margin-bottom: 30rpx;
+}
+.setting{
+  float: right;
+  width: 80rpx;
+  text-align: center;
+}
+.cDate{
   font-size: 30rpx;
+}
+.adWrap{
+  width: 100%;
+  padding: 20rpx 0;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.adBox{
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+.adBox image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.ff{
+  display: flex;
+  align-items: center;
+}
+.listWrap{
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+  margin-top: 20rpx;
+}
+.listTit{
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-around;
+}
+.bline{
+  height: 6rpx;
+  background-color: transparent;
+}
+.bline.act{
+  background-color: #000;
+}
+.listCon{
+  min-height: 280rpx;
+}
+.lc{
+  width: 95%;
+  margin: 0 auto;
+}
+.btn.bc1{
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 40rpx;
+}
+.none{
+  text-align: center;
+}
+
+/* 战队成员 */
+.presonWrap{
+  width: 100%;
+  overflow: hidden;
+  margin: 20rpx auto;
+  background-color: #fff;
+  padding: 20rpx;
+}
+.preson,.presonBox{
+  width: 95%;
+  margin: 0 auto;
+}
+.presonBox{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20rpx;
+}
+.headImgList{
+  max-width: 300rpx;
+}
+.headImgList image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  float: left;
+  margin-left: -10rpx;
+  background-color: #ccc;
+}
+.headImgList image:first-child{
+  margin-left: 0;
+}
+.pre_right{
+  width: 70rpx;
+  height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pre_right image{
+  width: 30rpx;
+  height: 30rpx;
+}
+/* 战队成员完 */
+.item_fix{
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
 }

@@ -3,7 +3,7 @@ var utils = require('./utils/util.js')
 var userFun = require('./utils/user')
 App({
   onLaunch: function (options) {
-    // console.log(options.scene)
+    console.log(options.scene)
     // 判断是否由分享进入小程序
     if (options.scene == 1007 || options.scene == 1008) {
       this.globalData.share = true
@@ -46,24 +46,24 @@ App({
           userFun.getUser(oo).then(r => {
             if (r) {
               // 修改
-              wx.getSetting({
-                success: res => {
-                  if (res.authSetting['scope.userInfo']) {
-                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-                    wx.getUserInfo({
-                      success: res => {
-                        // 可以将 res 发送给后台解码出 unionId
-                        var userInfo = res.userInfo
-                        r.nickName = userInfo.nickName
-                        r.headImgUrl = userInfo.avatarUrl
-                        r.sex = userInfo.gender //性别 0：未知、1：男、2：女
-                        r.city = userInfo.city
-                        userFun.putUser(r)
-                      }
-                    })
-                  }
-                }
-              })
+              // wx.getSetting({
+              //   success: res => {
+              //     if (res.authSetting['scope.userInfo']) {
+              //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
+              //       wx.getUserInfo({
+              //         success: res => {
+              //           // 可以将 res 发送给后台解码出 unionId
+              //           var userInfo = res.userInfo
+              //           r.nikeName = userInfo.nickName
+              //           r.headImgUrl = userInfo.avatarUrl
+              //           r.sex = userInfo.gender //性别 0：未知、1：男、2：女
+              //           r.city = userInfo.city
+              //           userFun.putUser(r)
+              //         }
+              //       })
+              //     }
+              //   }
+              // })
             } else {
               // 添加
               let mm = {

@@ -30,7 +30,7 @@ Component({
       this.setData({
         navbarData: obj,
       })
-    } else if (getCurrentPages().length == 1 && (getCurrentPages()[0].route != 'pages/company/company' && getCurrentPages()[0].route != 'pages/news/news' && getCurrentPages()[0].route != 'pages/mine/mine')) {
+    } else if (getCurrentPages().length == 1 && (getCurrentPages()[0].route != 'pages/active/active' && getCurrentPages()[0].route != 'pages/dynamic/dynamic' && getCurrentPages()[0].route != 'pages/team/team'&& getCurrentPages()[0].route != 'pages/mine/mine')) {
       let obj = {
         showCapsule: 1,
         showBackHome: 1,

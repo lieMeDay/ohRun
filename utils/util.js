@@ -1,9 +1,9 @@
 // 图片上传头
-const imgUrl = "http://192.168.0.101:8989"
+const imgUrl = "http://192.168.0.103:8989"
 
 // 接口调用函数
 const request = (options) => {
-  let BaseUrl = 'http://192.168.0.101:8989'
+  let BaseUrl = 'http://192.168.0.103:8989'
   return new Promise((resolve, reject) => {
     if (!options.method) {
       options.method = "GET"

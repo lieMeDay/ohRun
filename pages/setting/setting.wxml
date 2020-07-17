@@ -1,0 +1,188 @@
+<!-- 设置修改 -->
+<nav navbar-data='{{nvabarData}}'></nav>
+<view class="page" style='margin-top: {{height}}px;min-height:calc(100% - {{height}}px);'>
+	<!-- 战队设置 -->
+	<view class="comPanyWrap" wx:if="{{type=='c'&&!user}}">
+		<view class="item">
+			<view class="itemCon">
+				<view class="left">战队头像</view>
+				<view class="right" data-i="1" bindtap="toggleLogo">
+					<view class="con">
+						<image src="{{companyMsg.logo}}"></image>
+					</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">战队名称</view>
+				<view class="right" data-i="1" data-s="i" data-v="name" bindtap="editName">
+					<view class="con">{{companyMsg.name}}</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">申请加入审核</view>
+				<view class="right">
+					<switch checked="{{companyMsg.stateCom==2}}" class="switch" bindchange="comSwitch1"></switch>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">新建团队审核</view>
+				<view class="right">
+					<switch checked="{{companyMsg.stateTeam==2}}" class="switch" bindchange="comSwitch2"></switch>
+				</view>
+			</view>
+			<navigator url="/pages/preson/preson?comId={{comId}}&CorT=c&give=true" class="itemCon">
+				<view class="left">转让战队队长</view>
+				<view class="right">
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</navigator>
+		</view>
+		<view class="del">删除该战队</view>
+	</view>
+	<view class="" wx:if="{{type=='c'&&user}}">
+		<view class="item">
+			<view class="itemCon">
+				<view class="left">我的头像</view>
+				<view class="right" data-i="3" bindtap="toggleLogo" wx:if="{{myMsg.headImgUrl}}">
+					<view class="con">
+						<image src="{{myMsg.headImgUrl}}"></image>
+					</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+				<button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="right sqBtn" size='mini' wx:else>
+					<view class="none">
+						<view class="con">暂无</view>
+						<view class="arrow">
+							<image src="/image/more.png"></image>
+						</view>
+					</view>
+				</button>
+			</view>
+			<view class="itemCon">
+				<view class="left">我的昵称</view>
+				<view class="right" data-i="3" data-s="i" data-v="name" bindtap="editName">
+					<view class="con">{{myMsg.name}}</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">我的手机号</view>
+				<view class="right" data-i="4" data-s="i" data-v="phone" bindtap="editName">
+					<view class="con">{{myMsg.phone}}</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="del" bindtap="outCompany">退出该战队</view>
+	</view>
+	<!-- 团队设置 -->
+	<view class="TeamWrap" wx:if="{{type=='t'&&!user}}">
+		<view class="item">
+			<view class="itemCon">
+				<view class="left">团队头像</view>
+				<view class="right" data-i="2" bindtap="toggleLogo">
+					<view class="con">
+						<image src="{{teamMsg.logo}}"></image>
+					</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">团队名称</view>
+				<view class="right" data-i="2" data-s="i" data-v="name" bindtap="editName">
+					<view class="con">{{teamMsg.name}}</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">申请加入审核</view>
+				<view class="right">
+					<switch checked="{{teamMsg.type==1}}" class="switch" bindchange="comSwitch3"></switch>
+				</view>
+			</view>
+			<navigator url="/pages/preson/preson?teamId={{teamId}}&CorT=t&give=true" class="itemCon">
+				<view class="left">转让团队队长</view>
+				<view class="right">
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</navigator>
+		</view>
+		<view class="del">删除该团队</view>
+	</view>
+	<view class="" wx:if="{{type=='t'&&user}}">
+		<view class="item">
+			<view class="itemCon">
+				<view class="left">我的头像</view>
+				<view class="right" data-i="3" bindtap="toggleLogo" wx:if="{{myMsg.headImgUrl}}">
+					<view class="con">
+						<image src="{{myMsg.headImgUrl}}"></image>
+					</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+				<button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="right sqBtn" size='mini' wx:else>
+					<view class="none">
+						<view class="con">暂无</view>
+						<view class="arrow">
+							<image src="/image/more.png"></image>
+						</view>
+					</view>
+				</button>
+			</view>
+			<view class="itemCon">
+				<view class="left">我的昵称</view>
+				<view class="right" data-i="3" data-s="i" data-v="name" bindtap="editName">
+					<view class="con">{{myMsg.name}}</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+			<view class="itemCon">
+				<view class="left">我的手机号</view>
+				<view class="right" data-i="4" data-s="i" data-v="phone" bindtap="editName">
+					<view class="con">{{myMsg.phone}}</view>
+					<view class="arrow">
+						<image src="/image/more.png"></image>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="del" bindtap="outTeam">退出该团队</view>
+	</view>
+</view>
+<view class="alertWrap" wx:if="{{showAlert}}">
+	<view class="alertBox">
+		<view class="btnBox">
+			<view class="cancleBtn" bindtap="cancle">取消</view>
+			<view class="sureBtn" bindtap="sure">确认</view>
+		</view>
+		<view class="ipt" wx:if="{{showAS=='i'}}">
+			<input placeholder="请输入" bindinput="bindKeyInput"></input>
+		</view>
+		<view class="ipt big" wx:if="{{showAS=='t'}}">
+			<textarea placeholder="请输入"></textarea>
+		</view>
+	</view>
+</view>

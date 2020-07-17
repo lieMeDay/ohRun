@@ -5,6 +5,11 @@
   background: #fff;
   color: #000;
   z-index: 9999999;
+  overflow: hidden;
+}
+.nav-wrap.blue{
+  background: linear-gradient(to right,#00BAFF, #0084FF);
+  color: #fff;
 }
 /* 标题要居中 */
 .nav-title {
@@ -22,6 +27,9 @@
   font-size: 34rpx;
   color: #2c2b2b;
   font-weight: 500;
+}
+.blue .nav-title{
+  color: #fff;
 }
 
 .nav-capsule {

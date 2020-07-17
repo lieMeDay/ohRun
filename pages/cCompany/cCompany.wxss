@@ -1,21 +1,33 @@
 /* pages/cCompany/cCompany.wxss */
-.pWrap{
-width: 95%;
-height: calc(100% - 140rpx);
-margin: 0 auto;
-overflow: auto;
+.page{
+  width: 100%;
+  position: absolute;
 }
-.finish{
+.pWrap {
+  width: 95%;
+  height: calc(100% - 140rpx);
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.finish {
   width: 100%;
   height: 140rpx;
-  position: fixed;
+  /* position: fixed; */
   bottom: 0;
   z-index: 10;
 }
-.pC{
+
+.pC {
   margin-bottom: 20rpx;
+  overflow: hidden;
 }
-.logoBox{
+
+.nb {
+  margin-bottom: 0;
+}
+
+.logoBox {
   width: 140rpx;
   height: 140rpx;
   border-radius: 10rpx;
@@ -26,43 +38,60 @@ overflow: auto;
   justify-content: center;
   align-items: center;
 }
-.logoBox image{
+
+.logoBox image {
   width: 140rpx;
   height: 140rpx;
 }
-.logoBox image.sm{
+
+.logoBox image.sm {
   width: 100rpx;
   height: 100rpx;
 }
-.tit{
+
+.redX{
+  color: red;
+}
+.tit {
   line-height: 60rpx;
 }
-.center{
+
+.center {
   text-align: center;
 }
-.iptBox{
+
+.iptBox {
   margin-top: 10rpx;
-  height: 70rpx;
-  border: 2rpx solid #ccc;
+  /* height: 70rpx; */
+  /* border: 2rpx solid #ccc; */
+  background-color: #F2F2F2;
   border-radius: 10rpx;
-  line-height: 70rpx;
+  line-height: 100rpx;
 }
-input{
-  height: 70rpx;
+input {
+  height: 100rpx;
   width: calc(100% - 40rpx);
   padding: 0 20rpx;
 }
-.tips{
+textarea{
+  width: calc(100% - 30rpx);
+  margin: 15rpx auto;
+  height: 200rpx;
+  line-height: 60rpx;
+  display: block;
+}
+.tips {
   font-size: 32rpx;
   color: yellowgreen;
-width: auto;
-float: left;
-padding: 8px 0;
-background-color: #fff;
-text-align: left;
-font-weight: normal;
+  width: auto;
+  float: left;
+  padding: 8px 0;
+  background-color: #fff;
+  text-align: left;
+  font-weight: normal;
 }
-.finishBtn{
+
+.finishBtn {
   width: 95%;
   height: 80rpx;
   margin: 26rpx auto;

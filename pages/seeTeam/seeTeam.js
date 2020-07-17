@@ -1,4 +1,4 @@
-// pages/myCT/myCT.js
+// pages/seeTeam/seeTeam.js
 const app = getApp()
 const util = require('../../utils/util.js')
 const tool = util.tool
@@ -10,25 +10,30 @@ Page({
   data: {
     // 组件所需的参数
     nvabarData: {
+      blue:1,
       showCapsule: 0, //是否显示左上角图标   1表示显示    0表示不显示
-      title: '我的企业', //导航栏 中间的标题
+      title: '团队信息', //导航栏 中间的标题
       showBackPre: 0, //显示返回上一页
       showBackHome: 0, //显示返回主页
     },
     height: app.globalData.height * 2 + 20,
-    myCompany: {},
-    currI: 1,
-    toggleCT:1
+    currI:1,
+    auditNum:0
   },
-  toggleList(e) {
-    this.setData({
-      currI: e.currentTarget.dataset.i
-    })
-  },
-  toggleBtn(e){
-    this.setData({
-      toggleCT: e.currentTarget.dataset.i
-    })
+  nav_status() {
+    if (getCurrentPages().length == 1) {
+      this.setData({
+        'nvabarData.showCapsule': 0,
+        'nvabarData.showBackPre': 0, //显示返回上一页
+        'nvabarData.showBackHome': 0, //显示返回主页
+      })
+    } else {
+      this.setData({
+        'nvabarData.showCapsule': 1,
+        'nvabarData.showBackPre': 1, //显示返回上一页
+        'nvabarData.showBackHome': 0, //显示返回主页
+      })
+    }
   },
   // 获取openId
   getOpenId() {
@@ -36,52 +41,71 @@ Page({
       this.setData({
         openId: app.globalData.openId,
       })
-      this.getmyCompany()
+      this.getTeamMsg()
     } else {
       app.getOpenIdCallback = res => {
         this.setData({
           openId: res.openid
         })
-        this.getmyCompany()
+        this.getTeamMsg()
       }
     }
   },
-  getmyCompany() {
+  // 获取团队信息及与我的关系
+  getTeamMsg() {
     let that = this
+    let td = that.data
     let oo = {
-      openId: that.data.openId,
-      id:that.data.companyId
+      id: td.teamId,
+      openId: td.openId
     }
     tool({
-      url: '/team/getCompanyBrief',
+      url: '/team/getTeamInfo',
       data: oo
     }).then(res => {
       let rr = res.data.data
-      if (rr) {
-        rr.showDate = util.timeChange(rr.creatTime, 2)
-        that.setData({
-          myCompany: rr,
-        })
-      } else {
-        if (app.globalData.share) {
-          // 通过分享进入，直接添加 
-          // 注 分享时把战队id加上
-        } else [
-          wx.redirectTo({
-            url: '/pages/creatJoinc/creatJoinc',
-          })
-        ]
-      }
+      rr.showDate = rr.creatTime.slice(0,10)
+      that.setData({
+        teamMsg: rr
+      })
+    })
+  },
+  // 获取团队成员
+  getTeamPre(){
+    let that=this
+    let oo={
+      id:that.data.teamId
+    }
+    tool({
+      url:'/team/getTeamPerson',
+      data:oo
+    }).then(res=>{
+      let rr=res.data.data
+      rr=rr.filter(v=>v.status==1)
+      let dd=res.data.data
+      let atn=that.data.auditNum
+      dd=dd.filter(v=>v.status==3)
+      atn+=dd.length
+      that.setData({
+        userList:rr,
+        auditNum:atn
+      })
+    })
+  },
+  toggleList(e) {
+    this.setData({
+      currI: e.currentTarget.dataset.i
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.nav_status()
+    // options.teamId = 11
     this.setData({
-      companyId: options.id
+      teamId: options.teamId
     })
-    this.getOpenId()
   },
 
   /**
@@ -95,7 +119,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      auditNum:0
+    })
+    this.getOpenId()
+    this.getTeamPre()
   },
 
   /**
